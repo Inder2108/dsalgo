@@ -4,12 +4,12 @@ package datastructures;
  * Push and Pop are always at the begining of the List
  * Performance: This ensures constant time in worst case
 */
-public class _1_LinkedList {
+public class _1_StackUsingLinkedList {
 
-    private Class Node {
+    private class Node {
         String item;
         Node next;
-    }
+    };
 
     private Node head = null;
 
