@@ -1,4 +1,4 @@
-package datastructures;
+package ds;
 
 /*
  * Push and Pop are always at the begining of the List

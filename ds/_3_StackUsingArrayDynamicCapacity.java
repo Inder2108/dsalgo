@@ -1,4 +1,4 @@
-package datastructures;
+package ds;
 
 public class _3_StackUsingArrayDynamicCapacity {
 

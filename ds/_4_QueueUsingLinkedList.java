@@ -1,4 +1,4 @@
-package datastructures;
+package ds;
 
 /*
  * enque and deque are always at the begining of the List
