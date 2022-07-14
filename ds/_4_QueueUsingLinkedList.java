@@ -4,17 +4,17 @@ package ds;
  * enque and deque are always at the begining of the List
  * Performance: This ensures constant time in worst case
 */
-public class _4_QueueUsingLinkedList {
+public class _4_QueueUsingLinkedList<Item> {
 
     private class Node {
-        String item;
+        Item item;
         Node next;
     };
 
     private Node head = null;
     private Node tail = null;
 
-    public void enque(String item) {
+    public void enque(Item item) {
         Node oldTail = this.tail;
         this.tail = new Node();
         this.tail.item = item;
@@ -27,8 +27,8 @@ public class _4_QueueUsingLinkedList {
         }
     }
 
-    public String deque() {
-        String item = this.head.item;
+    public Item deque() {
+        Item item = this.head.item;
         this.head = this.head.next;
 
         if (isEmpty()) {

@@ -7,6 +7,7 @@ public class _2_StackUsingArrayWithFixedCapacity<Item> {
 
     @SuppressWarnings("unchecked")
     public _2_StackUsingArrayWithFixedCapacity(int capacity) {
+        // Arrays do not support Generics and hence we need to add a cast to Generic Type explicitly
         this.stack = (Item[]) new Object[capacity];
     }
 
