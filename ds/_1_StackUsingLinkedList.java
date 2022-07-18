@@ -1,10 +1,12 @@
 package ds;
 
+import java.util.Iterator;
+
 /*
  * Push and Pop are always at the begining of the List
  * Performance: This ensures constant time in worst case
 */
-public class _1_StackUsingLinkedList<Item> {
+public class _1_StackUsingLinkedList<Item> implements Iterable<Item> {
 
     private class Node {
         Item item;
@@ -29,4 +31,37 @@ public class _1_StackUsingLinkedList<Item> {
     public boolean isEmpty() {
         return this.head == null;
     }
+
+    public Iterator<Item> iterator () {
+        return new ListIterator();
+    }
+
+    public class ListIterator implements Iterator<Item> {
+        private Node current = head;
+
+        public boolean hasNext () {
+            return this.current != null;
+        }
+
+        public Item next () {
+            Item item = current.item;
+            current = current.next;
+            return item;
+        }
+    }
+
+    public static void main (String[] args) {
+        _1_StackUsingLinkedList<String> linkedList = new _1_StackUsingLinkedList<String>();
+        linkedList.push("This");
+        linkedList.push("is");
+        linkedList.push("a");
+        linkedList.push("Linked");
+        linkedList.push("List");
+        linkedList.pop();
+
+        for (String linkedListItem : linkedList) {
+            System.out.println(linkedListItem);
+        }
+    }
+
 }
