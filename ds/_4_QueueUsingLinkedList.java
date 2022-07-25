@@ -1,10 +1,12 @@
 package ds;
 
+import java.util.Iterator;
+
 /*
  * enque and deque are always at the begining of the List
  * Performance: This ensures constant time in worst case
 */
-public class _4_QueueUsingLinkedList<Item> {
+public class _4_QueueUsingLinkedList<Item> implements Iterable<Item> {
 
     private class Node {
         Item item;
@@ -39,5 +41,37 @@ public class _4_QueueUsingLinkedList<Item> {
 
     public boolean isEmpty() {
         return this.head == null;
+    }
+
+    public Iterator<Item> iterator () {
+        return new ListIterator();
+    }
+
+    public class ListIterator implements Iterator<Item> {
+        private Node current = head;
+
+        public boolean hasNext () {
+            return this.current != null;
+        }
+
+        public Item next () {
+            Item item = this.current.item;
+            this.current = this.current.next;
+            return item;
+        }
+    }
+
+    public static void main (String[] args) {
+        _4_QueueUsingLinkedList<String> queue = new _4_QueueUsingLinkedList<String>();
+        queue.enque("This");
+        queue.enque("is");
+        queue.enque("a");
+        queue.enque("Linked");
+        queue.enque("List");
+        queue.deque();
+
+        for (String item : queue) {
+            System.out.println(item);
+        }
     }
 }
