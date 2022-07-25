@@ -1,6 +1,8 @@
 package ds;
 
-public class _2_StackUsingArrayWithFixedCapacity<Item> {
+import java.util.Iterator;
+
+public class _2_StackUsingArrayWithFixedCapacity<Item> implements Iterable<Item> {
 
     private Item[] stack;
     private int head = 0;
@@ -27,22 +29,37 @@ public class _2_StackUsingArrayWithFixedCapacity<Item> {
         return this.head == 0;
     }
 
-    public static void main (String args[]) {
-        _2_StackUsingArrayWithFixedCapacity<String> queue = new _2_StackUsingArrayWithFixedCapacity<String>(4);
-        System.out.println(queue.isEmpty());
-        queue.push("One");
-        System.out.println(queue.isEmpty());
-        queue.pop();
-        System.out.println(queue.isEmpty());
-        queue.push("One");
-        queue.push("Two");
-        System.out.println(queue.toString());
-        queue.pop();
-        System.out.println(queue.toString());
-        queue.pop();
-        System.out.println(queue.toString());
-        queue.push("Three");
-        queue.push("Four");
-        System.out.println(queue.toString());
+    public Iterator<Item> iterator () {
+        return new ListIterator();
+    }
+
+    public class ListIterator implements Iterator<Item> {
+        private int current = 0;
+
+        public boolean hasNext () {
+            return stack[this.current] != null;
+        }
+
+        public Item next () {
+            Item item = stack[this.current];
+            current = current + 1;
+            return item;
+        }
+    }
+
+    public static void main (String[] args) {
+        _2_StackUsingArrayWithFixedCapacity<String> stack = new _2_StackUsingArrayWithFixedCapacity<String>(4);
+        stack.push("One");
+        stack.pop();
+        stack.push("One");
+        stack.push("Two");
+        stack.pop();
+        stack.pop();
+        stack.push("Three");
+        stack.push("Four");
+
+        for (String item : stack) {
+            System.out.println(item);
+        }
     }
 }
